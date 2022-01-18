@@ -71,7 +71,6 @@ int main(void)
         if(c==1)
         {
             onedig = num[c-1]; k++; j=1;
-            //wrd = fn.suffix1(onedig) + wrd;
             suffix1(onedig);
 
             if(c==k)
@@ -81,14 +80,12 @@ int main(void)
         if(c>=2&&num[c-2]==0&&j==0)
         {
             onedig = num[c-1]; k++; j=1;
-            //wrd = fn.suffix1(onedig) + wrd;
             suffix1(onedig);
         }
             
         if(i==c-2&&k<=c)
         {
             twodig=num[c-1]+num[c-2]; k++;
-            //wrd = fn.suffix2(twodig) + wrd;
             suffix2(twodig);
             
             if(c==k)
@@ -98,14 +95,12 @@ int main(void)
         if(i==c-3&&num[i]>0)
         {
             onedig = num[c-3]/100;
-            //wrd = "hundred " + wrd;
             strcpy(temp, "hundred ");
             strcat(temp, wrd);
             strcpy(wrd, temp);
             strcpy(temp, "");
         
             k++;
-            //wrd = fn.suffix1(onedig) + wrd;
             suffix1(onedig);
             if(c==k)
                 break;
@@ -114,14 +109,12 @@ int main(void)
         if(i==c-4&&k<=c&&(c<5||num[c-5]==0)&&num[i]>0)
         {
             onedig = num[c-4]/1000;
-            //wrd = "thousand " + wrd;
             strcpy(temp, "thousand ");
             strcat(temp, wrd);
             strcpy(wrd, temp);
             strcpy(temp, "");
             
             k++;
-            //wrd = fn.suffix1(onedig)+ wrd;
             suffix1(onedig);
             if(c==k)
                 break;
@@ -129,14 +122,12 @@ int main(void)
         else if(i==c-5&&k<=c&&(num[i]+num[i+1])>=10000)
         {
             twodig = (num[c-4]+num[c-5])/1000;
-            //wrd = "thousand " + wrd;
             strcpy(temp, "thousand ");
             strcat(temp, wrd);
             strcpy(wrd, temp);
             strcpy(temp, "");
             
             k++;
-            //wrd = fn.suffix2(twodig) + wrd;
             suffix2(twodig);
             if(c==k)
                 break;
@@ -145,14 +136,12 @@ int main(void)
         if(i==c-6&&k<=c&&(c<7||num[c-7]==0)&&num[i]>0)
         {
             onedig = num[c-6]/100000;
-            //wrd = "lakh " + wrd;
             strcpy(temp, "lakh ");
             strcat(temp, wrd);
             strcpy(wrd, temp);
             strcpy(temp, "");
 
             k++;
-            //wrd = fn.suffix1(onedig) + wrd;
             suffix1(onedig);
             if(c==k)
                 break;
@@ -166,7 +155,6 @@ int main(void)
             strcpy(wrd, temp);
             strcpy(temp, "");
             k++;
-            //wrd = fn.suffix2(twodig) + wrd;
             suffix2(twodig);
             if(c==k)
                 break;
@@ -181,7 +169,6 @@ int main(void)
             strcpy(wrd, temp);
             strcpy(temp, "");
             k++;
-            //wrd = fn.suffix1(onedig) + wrd;
             suffix1(onedig);
             if(c==k)
                 break;
@@ -189,13 +176,11 @@ int main(void)
         else if(i==c-9&&k<=c&&(num[i]+num[i+1])>=100000000)
         {
             twodig = (num[c-8]+num[c-9])/10000000;
-            //wrd = "crore " + wrd;
             strcpy(temp, "crore ");
             strcat(temp, wrd);
             strcpy(wrd, temp);
             strcpy(temp, "");
             k++;
-            //wrd = fn.suffix2(twodig) + wrd;
             suffix2(twodig);
             if(c==k)
                 break;
@@ -213,13 +198,11 @@ void suffix1(int onedig)
     {
         if(onedig == unit[i])
         {
-            //printf("%s ", U[i]);
             strcpy(t, U[i]);
             strcat(t, " ");
             strcat(t, str);
             strcpy(str, t);
             strcpy(t, "");
-            //str = U[i] + " " +str;
             break;
         }
     }
@@ -237,13 +220,11 @@ void suffix2(int twodig)
         {
             if(twodig%10==unit[i])
             {
-                //printf("%s ", U[i]);
                 strcpy(t, U[i]);
                 strcat(t, " ");
                 strcat(t, str);
                 strcpy(str, t);
                 strcpy(t, "");
-                //str = U[i] + " " + str;
                 break;
             }
             else if(twodig%10==0)
@@ -253,13 +234,11 @@ void suffix2(int twodig)
         {
             if(10*(twodig/10)==tens[i])
             {
-                //printf("%s ", T[i]);
                 strcpy(t, T[i]);
                 strcat(t, " ");
                 strcat(t, str);
                 strcpy(str, t);
                 strcpy(t, "");
-                //str = T[i] + " " + str;
                 break;
             }
         }
@@ -270,13 +249,11 @@ void suffix2(int twodig)
         {
             if(twodig==sp[i])
             {
-                //printf("%s ", S[i]);
                 strcpy(t, S[i]);
                 strcat(t, " ");
                 strcat(t, str);
                 strcpy(str, t);
                 strcpy(t, "");
-                //str = S[i] + " " + str;
                 break;
             }
         }
